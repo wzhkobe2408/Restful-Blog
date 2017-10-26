@@ -1,0 +1,25 @@
+i.icon{
+  font-size: 1.5em;
+  color:white;
+  padding-right: 20px;
+}
+
+.container.main{
+  margin-top: 5em;
+}
+
+.image{
+  width: 100%;
+}
+
+#delete {
+  display: inline;
+}
+
+div.image img{
+  margin-top: 12px;
+}
+
+hr{
+  opacity: 0.5;
+}
