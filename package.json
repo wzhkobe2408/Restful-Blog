@@ -9,11 +9,20 @@
   "author": "wzh",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^1.0.3",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^2.0.0",
+    "cookie-parser": "^1.4.3",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
+    "express-flash": "0.0.2",
     "express-sanitizer": "^1.0.2",
+    "express-session": "^1.15.6",
     "method-override": "^2.3.10",
-    "mongoose": "^4.12.4"
+    "mongoose": "^4.12.4",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
   }
 }

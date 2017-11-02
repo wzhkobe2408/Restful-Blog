@@ -1,0 +1,38 @@
+<% include ../partials/header %>
+<div class="ui main text container segment">
+  <% if(error.length > 0){ %>
+    <div class="ui error message">
+      <p><%= error %></p>
+    </div>
+  <% } %>
+  <div class="ui huge header">
+    Sign up
+  </div>
+  <form class='ui form' action="/signup" method="POST">
+    <div class="field">
+      <label>Username</label>
+      <input type="text" name='username' placeholder="Enter username...">
+    </div>
+
+    <div class="field">
+      <label>Email</label>
+      <input type="email" name='email' placeholder="example@example.com">
+    </div>
+
+    <div class="field">
+      <label>Password</label>
+      <input type="password" name='password' placeholder="Enter password..." >
+    </div>
+
+    <div class="field">
+      <label>Password Confirm</label>
+      <input type="password" name='passwordConfirm' placeholder="Enter password again..." >
+    </div>
+
+    <button class="ui primary basic button">Sign up</button>
+  </form>
+</div>
+
+
+
+<% include ../partials/footer %>
