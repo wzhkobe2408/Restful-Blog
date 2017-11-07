@@ -1,0 +1,36 @@
+<% include ../partials/header %>
+  <div class="ui main text container segment">
+    <div class="ui large header">My Report</div>
+    <% if(success.length > 0){ %>
+      <div class="ui success message">
+        <i class="close icon" style='margin-top:5px;'></i>
+        <%= success %>
+      </div>
+    <% } %>
+    <% if(user.reports && user.reports.length == 0){ %>
+      <h3 class="ui header">You don't have any report right now.</h3>
+    <% } else{ %>
+      <% user.reports.forEach(function(report){ %>
+        <div class="ui items">
+          <div class="item">
+            <a class="ui small image">
+              <img src="<%= report.image %>" />
+            </a>
+            <div class="content">
+              <a class="header" href="/reports/<%= report._id %>"><%= report.title %></a>
+              <div class="description">
+                <p><%- report.body.substring(0,100) %>...</p>
+              </div>
+              <div class="extra">
+                <a class="ui floated basic vilot button" href='/reports/<%= report._id %>'>
+                  Read More
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+      <% }) %>
+    <% } %>
+  </div>
+<% include ../partials/footer %>

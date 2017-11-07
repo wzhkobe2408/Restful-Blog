@@ -3,33 +3,102 @@
 
   <div class="ui huge header">Rest Blog</div>
   <% if(success.length > 0){ %>
-    <div class="ui message">
-      <p><%= success %></p>
+    <div class="ui success message">
+      <i class="close icon" style='margin-top:5px;'></i>
+      <%= success %>
     </div>
   <% } %>
-  <div class="ui top attached segment">
-    <div class="ui divided items">
-      <% blogs.forEach(function(blog){ %>
-        <div class="item">
-          <div class="image">
-            <img src="<%= blog.image %>" class="ui centered rounded image" alt="pic">
+
+  <div class="ui top attached tabular menu">
+    <a class="item control active" href="#tabs-1" data-tab="first">All</a>
+    <a class="item control " href="#tabs-2" data-tab="second">Taken</a>
+    <a class="item control " href="#tabs-3" data-tab="third">Untaken</a>
+  </div>
+  <div id="tabs-1" class="ui bottom attached tab segment active tab-content" data-tab="first">
+    <div class="ui top attached segment">
+      <div class="ui divided items">
+        <% blogs.forEach(function(blog){ %>
+          <div class="item">
+            <div class="image">
+              <img src="<%= blog.image %>" class="ui centered rounded image" alt="pic">
+            </div>
+            <div class="content">
+              <a class="header" href="/blogs/<%= blog._id %>"><%= blog.title %></a>
+              <div class="meta">
+                <span><%= blog.created_date.toDateString() %></span>
+              </div>
+              <div class="description">
+                <p><%- blog.body.substring(0, 100) %>...</p>
+              </div>
+              <div class="extra">
+                <a class="ui floated basic vilot button" href='/blogs/<%= blog._id %>'>
+                  Read More
+                </a>
+              </div>
+            </div>
           </div>
-          <div class="content">
-            <a class="header" href="/blogs/<%= blog._id %>"><%= blog.title %></a>
-            <div class="meta">
-              <span><%= blog.created.toDateString() %></span>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+
+  <div id="tabs-2" class="ui bottom attached tab segment tab-content" data-tab="second">
+    <div class="ui top attached segment">
+      <div class="ui divided items">
+        <% blogs.forEach(function(blog){ %>
+          <% if(blog.taken) { %>
+          <div class="item">
+            <div class="image">
+              <img src="<%= blog.image %>" class="ui centered rounded image" alt="pic">
             </div>
-            <div class="description">
-              <p><%- blog.body.substring(0, 100) %>...</p>
-            </div>
-            <div class="extra">
-              <a class="ui floated basic vilot button" href='/blogs/<%= blog._id %>'>
-                Read More
-              </a>
+            <div class="content">
+              <a class="header" href="/blogs/<%= blog._id %>"><%= blog.title %></a>
+              <div class="meta">
+                <span><%= blog.created_date.toDateString() %></span>
+              </div>
+              <div class="description">
+                <p><%- blog.body.substring(0, 100) %>...</p>
+              </div>
+              <div class="extra">
+                <a class="ui floated basic vilot button" href='/blogs/<%= blog._id %>'>
+                  Read More
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      <% }) %>
+          <% } %>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+
+  <div id="tabs-3" class="ui bottom attached tab segment tab-content" data-tab="third">
+    <div class="ui top attached segment">
+      <div class="ui divided items">
+        <% blogs.forEach(function(blog){ %>
+          <% if(!blog.taken) { %>
+          <div class="item">
+            <div class="image">
+              <img src="<%= blog.image %>" class="ui centered rounded image" alt="pic">
+            </div>
+            <div class="content">
+              <a class="header" href="/blogs/<%= blog._id %>"><%= blog.title %></a>
+              <div class="meta">
+                <span><%= blog.created_date.toDateString() %></span>
+              </div>
+              <div class="description">
+                <p><%- blog.body.substring(0, 100) %>...</p>
+              </div>
+              <div class="extra">
+                <a class="ui floated basic vilot button" href='/blogs/<%= blog._id %>'>
+                  Read More
+                </a>
+              </div>
+            </div>
+          </div>
+          <% } %>
+        <% }) %>
+      </div>
     </div>
   </div>
 </div>

@@ -16,7 +16,9 @@
 
       <div class="field">
         <label>Blog Content</label>
-        <textarea name="blog[body]"><%= blog.body %></textarea>
+        <textarea id="TextArea1" cols="20" rows="2" class="ckeditor" name="blog[body]">
+          <%= blog.body %>
+        </textarea>
       </div>
       <button class="ui primary basic button">Submit</button>
     </form>

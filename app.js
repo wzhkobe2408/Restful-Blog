@@ -14,12 +14,15 @@ var secret = require('./config/secret')
 
 var app = express();
 
+var commentRoute = require('./routes/comment')
 var blogRoute = require('./routes/blog')
+var reportRoute = require('./routes/report')
 var userRoute = require('./routes/user')
 var reportRoute = require('./routes/report')
 var dashboardRoute = require('./routes/dashboard')
 
-mongoose.connect(secret.database);
+
+mongoose.connect(secret.database,{ useMongoClient: true });
 mongoose.Promise  = Promise;
 
 app.set("view engine","ejs")
@@ -47,6 +50,8 @@ app.use(blogRoute)
 app.use(userRoute)
 app.use(reportRoute)
 app.use(dashboardRoute)
+app.use('/blogs/:id/comments', commentRoute)
+app.use(reportRoute)
 
 app.listen(3000,function() {
   console.log("App is listening on port 3000...")

@@ -1,0 +1,22 @@
+<% include ../partials/header %>
+<div class="ui main text container segment">
+  <div class="ui huge header">
+    <%= task.title %>
+  </div>
+  <div class="ui top attached">
+    <div class="item">
+      <img class="ui centered rounded image" src="<%= task.image %>" alt="pic">
+      <div class="content">
+        <a class="ui tag label"><%= task.created_date.toDateString() %></a>
+        <a class="ui teal tag label">Created by <%= task.author.username %></a>
+      </div>
+      <div class="description">
+        <p><%- task.body %></p>
+      </div>
+      <hr>
+      <a class="ui teal tag label">Taken by <%= task.taskTaker.username %></a>
+      <button class="ui negative basic button">Untake</button>
+    </div>
+  </div>
+</div>
+<% include ../partials/footer %>

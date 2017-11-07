@@ -1,24 +1,59 @@
 <% include ../partials/header %>
-<div class="ui main text container segment">
-  <div class="ui items">
-    <div class="item">
-        <div class="image">
-          <img src="https://images.unsplash.com/photo-1499615767948-e6a89ef6060f?w=750&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">
+<div class="ui main grid container adjustcontainer">
+          <div class="row">
+          <div class="six wide column">
+            <div class="ui large  header">User Profile</div>
+            <div class="ui  card">
+              <div class="image">
+                <img id='profile' src="<%= user.userProfile.avatar %>">
+              </div>
+              <div class="content">
+                <a class="header"><%= user.username %></a>
+                <div class="meta">
+                  <span class="date">2013年加入</span>
+                </div>
+                <div class="description"><%= user.email %></div>
+              </div>
+              <div class="extra content">
+                <form action="/users/<%= user._id %>/profileImage" method="POST" enctype="multipart/form-data">
+                  <span class="ui fluid button btn-file">
+                    <span id="buttonLabel">Upload new photo</span> <input type="file" name="myAvatar">
+                  </span>
+                  <button type="submit" style="margin-top:8px;" class="fluid ui primary basic button">Submit</button>
+                </form>
+              </div>
+            </div>
+
+          </div>
+          <div class="ten wide column">
+            <div class="ui  huge header">
+              Edit Profile
+            </div>
+            <form class='ui form' action="/login" method="POST">
+
+              <div class="field">
+                <label>Intro</label>
+                <textarea name='adress' rows="8" cols="80">Enter introduction...</textarea>
+              </div>
+
+              <div class="field">
+                <label>Major</label>
+                <input type="text" name='major' placeholder="Enter major...">
+              </div>
+
+              <div class="field">
+                <label>Grade</label>
+                <input type="text" name='grade' placeholder="Enter grade...">
+              </div>
+
+              <div class="field">
+                <label>Address</label>
+                <input type="text" name='adress' placeholder="Enter adress..." >
+              </div>
+
+              <button class="ui primary basic button">Upload</button>
+            </form>
+          </div>
         </div>
-        <div class="content">
-          <a class="header"><%= user.username %></a>
-          <div class="meta">
-            <span><%= user.email %></span>
-          </div>
-          <div class="description">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima recusandae cupiditate incidunt, ea sequi, eos vitae delectus. Sit aperiam maxime veniam accusantium atque debitis obcaecati? Perferendis tempora in, deserunt earum.</p>
-          </div>
-          <div class="extra">
-            Additional Details
-          </div>
-          <a href="#" class="ui primary basic button">Edit</a>
         </div>
-      </div>
-  </div>
-</div>
 <% include ../partials/footer %>

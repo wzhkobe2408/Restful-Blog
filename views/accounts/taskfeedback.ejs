@@ -1,0 +1,103 @@
+<% include ../partials/header %>
+  <div class="ui main text container segment">
+	<% if(success.length > 0){ %>
+		<div class="ui success message">
+		  <i class="close icon" style='margin-top:5px;'></i>
+		  <%= success %>
+		</div>
+	<% } %>
+    <div class="ui large header">New Feedback</div>
+    <div class="ui items">
+      <div class="item">
+        <div class="ui small image">
+          <img src="http://www.semantic-ui.cn/images/wireframe/image.png">
+        </div>
+        <div class="content">
+          <div class="header">Camp</div>
+          <div class="meta">
+            <span class="price">1200 dollars</span>
+            <span class="stay">1 mouth</span>
+          </div>
+          <div class="description">
+            <div class="ui comments">
+              <div class="comment">
+                <a class="avatar">
+                  <img src="http://www.semantic-ui.cn/images/avatar/small/joe.jpg">
+                </a>
+                <div class="content">
+                  <a class="author">汤姆·卢基奇</a>
+                  <div class="text">这将非常适用于商业报告。我确信会下载它。 </div>
+                  <div class="actions">
+                    <a class="reply">Reply</a>
+                    <a class="save">Save</a>
+                    <a class="hide">Hide</a>
+                    <a><i class="expand icon"></i> Full-screen </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="ui small image">
+          <img src="http://www.semantic-ui.cn/images/wireframe/image.png">
+        </div>
+        <div class="content">
+          <div class="header">Buck's Homebrew Stayaway</div>
+          <div class="meta">
+            <span class="price">1000 dollars</span>
+            <span class="stay">2 weeks</span>
+          </div>
+          <div class="description">
+            <div class="ui comments">
+              <div class="comment">
+                <a class="avatar">
+                  <img src="http://www.semantic-ui.cn/images/avatar/small/joe.jpg">
+                </a>
+                <div class="content">
+                  <a class="author">汤姆·卢基奇</a>
+                  <div class="text">这将非常适用于商业报告。我确信会下载它。 </div>
+                  <div class="actions">
+                    <a class="reply">Reply</a>
+                    <a class="save">Save</a>
+                    <a class="hide">Hide</a>
+                    <a><i class="expand icon"></i> Full-screen </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <hr />
+      <div class="ui large header">My Task Record</div>
+      <% if(user.takenTasks && user.takenTasks.length > 0) { %>
+        <div class="ui items">
+          <% user.takenTasks.forEach(function(takenTask) { %>
+            <div class="item">
+              <div class="image">
+                <img src="<%= takenTask.image %>" class="ui centered rounded image" alt="pic">
+              </div>
+              <div class="content">
+                <a class="header" href="/users/<%= user._id %>/tasks/<%= takenTask._id %>"><%= takenTask.title %></a>
+                <div class="meta">
+                  <span><%= takenTask.created_date.toDateString() %></span>
+                </div>
+                <div class="description">
+                  <p><%- takenTask.body.substring(0, 100) %>...</p>
+                </div>
+                <div class="extra">
+                  <a class="ui floated basic vilot button" href='/users/<%= user._id %>/tasks/<%= takenTask._id %>'>
+                    Read More
+                  </a>
+                </div>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+      <% }else { %>
+        <h3 class="ui header">You don't have any tasks record right now.</h3>
+      <% } %>
+<% include ../partials/footer %>

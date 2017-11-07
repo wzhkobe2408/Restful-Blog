@@ -7,6 +7,38 @@ var userSchema = new mongoose.Schema({
   email:{
     type:String,
     unique:true
+  },
+  joined_date:{
+    type:Date,
+    default:Date.now
+  },
+  reports:[
+    {
+      type:mongoose.Schema.Types.ObjectId,
+      ref:"Report"
+    }
+  ],
+  isManage:false,
+  takenTasks:[
+    {
+      type:mongoose.Schema.Types.ObjectId,
+      ref:"Blog"
+    }
+  ],
+  releasedTasks:[
+  	{
+  		type:mongoose.Schema.Types.ObjectId,
+  		ref:"Blog"
+  	}
+  ],
+  userProfile:{
+    avatar:{
+		type:String,
+		default:"http://www.semantic-ui.cn/images/avatar2/large/kristy.png"
+	},
+    age:Number,
+    major:String,
+    grade:Number
   }
 })
 

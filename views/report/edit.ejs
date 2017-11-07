@@ -1,0 +1,26 @@
+<% include ../partials/header %>
+<div class="ui main text container segment">
+  <div class="ui huge header">
+    Edit <%= report.title %>
+  </div>
+  <form class='ui form' action='/users/<%= user._id %>/reports/<%= report._id %>/?_method=PUT' method='POST'>
+    <div class="field">
+      <label>Title</label>
+      <input type="text" name="report[title]" placeholder="title" value="<%= report.title %>" >
+    </div>
+
+    <div class="field">
+      <label>Image</label>
+      <input type="text" name="report[image]" placeholder="image" value="<%= report.image %>">
+    </div>
+
+    <div class="field">
+      <label>Blog Content</label>
+      <textarea id="TextArea1" cols="20" rows="2" class="ckeditor" name="report[body]">
+        <%= report.body %>
+      </textarea>
+    </div>
+    <button type='submit' class="ui primary basic button">Submit</button>
+  </form>
+</div>
+<% include ../partials/footer %>

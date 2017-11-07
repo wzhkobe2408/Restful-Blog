@@ -1,8 +1,9 @@
 <% include ../partials/header %>
 <div class="ui main text container segment">
   <% if(error.length > 0){ %>
-    <div class="ui error message">
-      <p><%= error %></p>
+    <div class="ui negative message">
+      <i class="close icon" style='margin-top:5px;'></i>
+      <%= error %>
     </div>
   <% } %>
   <div class="ui huge header">
@@ -11,22 +12,22 @@
   <form class='ui form' action="/signup" method="POST">
     <div class="field">
       <label>Username</label>
-      <input type="text" name='username' placeholder="Enter username...">
+      <input type="text" name='username' placeholder="Enter username..." required>
     </div>
 
     <div class="field">
       <label>Email</label>
-      <input type="email" name='email' placeholder="example@example.com">
+      <input type="email" name='email' placeholder="example@example.com" required>
     </div>
 
     <div class="field">
       <label>Password</label>
-      <input type="password" name='password' placeholder="Enter password..." >
+      <input type="password" name='password' placeholder="Enter password..." required>
     </div>
 
     <div class="field">
       <label>Password Confirm</label>
-      <input type="password" name='passwordConfirm' placeholder="Enter password again..." >
+      <input type="password" name='passwordConfirm' placeholder="Enter password again..." required>
     </div>
 
     <button class="ui primary basic button">Sign up</button>
