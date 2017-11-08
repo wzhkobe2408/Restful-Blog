@@ -8,7 +8,7 @@
       </div>
     <% } %>
     <% if(user.reports && user.reports.length == 0){ %>
-      <h3 class="ui header">You don't have any report right now.</h3>
+      <h3 class="ui red header">You don't have any report right now.</h3>
     <% } else{ %>
       <% user.reports.forEach(function(report){ %>
         <div class="ui items">

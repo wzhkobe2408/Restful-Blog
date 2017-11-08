@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var mongoosastic = require('mongoosastic');
 
 var blogSchema = new mongoose.Schema({
   title:String,
@@ -30,5 +31,11 @@ var blogSchema = new mongoose.Schema({
 	  }
   }
 })
+
+blogSchema.plugin(mongoosastic, {
+  hosts:[
+    'localhost:9200'
+  ]
+});
 
 module.exports = mongoose.model("Blog",blogSchema);

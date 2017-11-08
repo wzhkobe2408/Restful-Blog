@@ -3,6 +3,32 @@ var router = express.Router()
 var Blog = require('../models/blog')
 var User = require('../models/user')
 
+Blog.createMapping(function(err, mapping) {
+  if(err) {
+    console.log('error creating mapping');
+    console.log(err);
+  }else {
+    console.log("Mapping created");
+    console.log(mapping);
+  }
+});
+
+var stream = Blog.synchronize();
+var count = 0;
+
+stream.on('data', function() {
+  count++;
+});
+
+stream.on('close', function() {
+  console.log('Indexed '+count+' documents');
+});
+
+stream.on('error', function(err) {
+  console.log(err);
+});
+
+
 //任务列表页/首页
 router.get('/', function(req,res) {
   res.redirect('/blogs');
@@ -185,6 +211,27 @@ router.get('/users/:id/tasks/:taskId', function(req, res) {
       console.log(err);
     })
 })
+
+router.post('/search', function(req, res) {
+  res.redirect('/search?q=' + req.body.q);
+})
+
+router.get('/search', function(req, res, next) {
+  if(req.query.q) {
+    Blog.search({
+      query_string:{query:req.query.q}
+    }, function(err, results) {
+      if(err) return next(err);
+      var data = results.hits.hits.map(function(hit) {
+        return hit;
+      });
+      res.render('search-result', {
+        query:req.query.q,
+        data:data
+      });
+    });
+  }
+});
 
 //中间件   判断是否登录
 function isLoggedin(req, res, next) {

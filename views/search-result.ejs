@@ -1,0 +1,31 @@
+<% include ./partials/header %>
+<div class="ui main text container segment">
+  <div class="ui large header">Search Results For "<%= query %>"</div>
+  <hr />
+  <% if(data && data.length == 0){ %>
+    <h3 class="ui red header">Nothing match.Please change your search item.</h3>
+  <% } else{ %>
+    <% data.forEach(function(dataItem){ %>
+      <div class="ui items">
+        <div class="item">
+          <a class="ui small image">
+            <img src="<%= dataItem._source.image %>" />
+          </a>
+          <div class="content">
+            <a class="header" href="/blogs/<%= dataItem._id %>"><%= dataItem._source.title %></a>
+            <div class="description">
+              <p><%- dataItem._source.body.substring(0,100) %>...</p>
+            </div>
+            <div class="extra">
+              <a class="ui floated basic vilot button" href='/blogs/<%= dataItem._id %>'>
+                Read More
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+    <% }) %>
+  <% } %>
+</div>
+<% include ./partials/footer %>

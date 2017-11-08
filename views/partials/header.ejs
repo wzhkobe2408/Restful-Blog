@@ -34,23 +34,24 @@
       <div class="right menu rightMenu">
         <% if(!user){ %>
           <div class="ui category search item">
-            <div class="ui icon input">
-              <input class="prompt" type="text" placeholder="Search name">
-              <i class="search icon"></i>
-            </div>
-            <div class="results"></div>
+            <from action='/search' method='POST'>
+              <div class="ui icon input">
+                <input class="prompt" type="text" placeholder="Search name">
+                <i class="search icon"></i>
+              </div>
+            </from>
           </div>
           <a href="/login" class='item'>Login</a>
           <a href="/signup" class='item'>Signup</a>
         <% } else { %>
           <div class="ui category search item">
-            <div class="ui icon input">
-              <input class="prompt" type="text" placeholder="Search name...">
-              <i class="search icon" style='color:#000'></i>
-            </div>
-            <div class="results"></div>
+            <form action='/search' method='POST'>
+              <div class="ui icon input">
+                  <input name='q' class="prompt" type="text" placeholder="Search name...">
+                  <i class="search icon" style='color:#000'></i>
+              </div>
+            </form>
           </div>
-
           <div class="ui compact menu">
             <div class="ui simple dropdown item">Login as <%= user.username %> <i class="dropdown icon"></i> <div class="menu">
               <a href="/users/<%= user._id %>/profile" class="item">My Profile</a>
@@ -100,7 +101,6 @@
             <input class="prompt" type="text" placeholder="Search name...">
             <i class="search icon" style='color:#000'></i>
           </div>
-          <div class="results"></div>
         </div>
 
         <div class="ui compact menu">

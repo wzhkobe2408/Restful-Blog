@@ -1,59 +1,126 @@
 <% include ../partials/header %>
 <div class="ui main grid container adjustcontainer">
-          <div class="row">
-          <div class="six wide column">
-            <div class="ui large  header">User Profile</div>
-            <div class="ui  card">
-              <div class="image">
-                <img id='profile' src="<%= user.userProfile.avatar %>">
+        <div class="row">
+        <div class="col-md-5" style="margin-bottom:18px;">
+          <div class="ui huge header">User Profile</div>
+          <div class="ui card" style="width:80%">
+            <div class="image">
+              <img id='profile' src="<%= user.userProfile.avatar %>">
+            </div>
+            <div class="content">
+              <a class="header"><%= user.username %></a>
+              <div class="meta">
+                <span class="date">2013年加入</span>
               </div>
-              <div class="content">
-                <a class="header"><%= user.username %></a>
-                <div class="meta">
-                  <span class="date">2013年加入</span>
+              <div class="description"><%= user.email %></div>
+            </div>
+            <div class="extra content">
+              <form action="/users/<%= user._id %>/profileImage" method="POST" enctype="multipart/form-data">
+                <span class="ui fluid button btn-file">
+                  <span id="buttonLabel">Upload new photo</span> <input type="file" name="myAvatar">
+                </span>
+                <button type="submit" style="margin-top:8px;" class="fluid ui primary basic button">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="ui  huge header">
+            Edit Profile
+          </div>
+          <div class="ui main text segment">
+          <form class='ui form' action="/login" method="POST">
+            <div class="field">
+              <label>Intro</label>
+              <textarea name='adress' rows="8" cols="80">Enter introduction...</textarea>
+            </div>
+            <div class="field">
+              <div class="two fields">
+                <div class="field">
+                  <label>Age</label>
+                  <input type="number" name="age" placeholder="Enter your age">
                 </div>
-                <div class="description"><%= user.email %></div>
-              </div>
-              <div class="extra content">
-                <form action="/users/<%= user._id %>/profileImage" method="POST" enctype="multipart/form-data">
-                  <span class="ui fluid button btn-file">
-                    <span id="buttonLabel">Upload new photo</span> <input type="file" name="myAvatar">
-                  </span>
-                  <button type="submit" style="margin-top:8px;" class="fluid ui primary basic button">Submit</button>
-                </form>
+                <div class="field">
+                  <label>Student No.</label>
+                  <input type="text" name="studentNumber" placeholder="Enter your student number">
+                </div>
               </div>
             </div>
-
-          </div>
-          <div class="ten wide column">
-            <div class="ui  huge header">
-              Edit Profile
+            <div class="field">
+              <select>
+                <option value="">专业</option>
+                <option value="1">计算机类</option>
+                <option value="2">机械类</option>
+                <option value="3">金融类</option>
+                <option value="4">语言类</option>
+                <option value="5">化学类</option>
+                <option value="6">物理类</option>
+              </select>
             </div>
-            <form class='ui form' action="/login" method="POST">
-
-              <div class="field">
-                <label>Intro</label>
-                <textarea name='adress' rows="8" cols="80">Enter introduction...</textarea>
+            <div class="field">
+              <div class="inline fields">
+                <label for="fruit">Grade</label>
+                <div class="field">
+                  <div class="ui radio checkbox">
+                    <input type="radio" name="fruit" checked="" tabindex="0" class="hidden">
+                    <label>大一</label>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="ui radio checkbox">
+                    <input type="radio" name="fruit" tabindex="0" class="hidden">
+                    <label>大二</label>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="ui radio checkbox">
+                    <input type="radio" name="fruit" tabindex="0" class="hidden">
+                    <label>大三</label>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="ui radio checkbox">
+                    <input type="radio" name="fruit" tabindex="0" class="hidden">
+                    <label>大四</label>
+                  </div>
+                </div>
               </div>
-
-              <div class="field">
-                <label>Major</label>
-                <input type="text" name='major' placeholder="Enter major...">
+            </div>
+            <div class="field">
+              <div class="inline fields">
+                <label for="fruit">Gender</label>
+                <div class="field">
+                  <div class="ui radio checkbox">
+                    <input type="radio" name="fruit" checked="" tabindex="0" class="hidden">
+                    <label>Male</label>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="ui radio checkbox">
+                    <input type="radio" name="fruit" tabindex="0" class="hidden">
+                    <label>Female</label>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="ui radio checkbox">
+                    <input type="radio" name="fruit" tabindex="0" class="hidden">
+                    <label>Other</label>
+                  </div>
+                </div>
               </div>
-
-              <div class="field">
-                <label>Grade</label>
-                <input type="text" name='grade' placeholder="Enter grade...">
-              </div>
-
-              <div class="field">
-                <label>Address</label>
-                <input type="text" name='adress' placeholder="Enter adress..." >
-              </div>
-
-              <button class="ui primary basic button">Upload</button>
-            </form>
-          </div>
+            </div>
+            <div class="field">
+              <label>Phone Number</label>
+              <input type='text' name='phone' placeholder='Enter phone numbber...' />
+            </div>
+            <div class="field">
+              <label>Address</label>
+              <input type="text" name='adress' placeholder="Enter adress..." >
+            </div>
+            <button class="ui primary basic button">Upload</button>
+          </form>
         </div>
         </div>
+      </div>
+      </div>
 <% include ../partials/footer %>
