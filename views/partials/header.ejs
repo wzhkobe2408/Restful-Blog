@@ -7,11 +7,12 @@
   <link href="https://cdn.bootcss.com/semantic-ui/2.2.13/semantic.min.css" rel="stylesheet">
   <link href="https://cdn.bootcss.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/styles/custom.css">
+
   <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
   <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
   <script src="https://cdn.bootcss.com/ckeditor/4.7.3/ckeditor.js"></script>
   <script src="https://cdn.bootcss.com/ckeditor/4.7.3/adapters/jquery.js"></script>
-  <script src='/js/main.js' ></script>
   <title>Rest Blog</title>
 </head>
 <body>
@@ -22,14 +23,19 @@
       <a href="/" class="item left-item">
         Home
       </a>
-      <a href="/blogs/new" class="item left-item">
-        New Task
-      </a>
+      <% if(user && user.isManage){ %>
+        <a href="/blogs/new" class="item left-item">
+          New Task
+        </a>
+      <% } %>
       <a href="/reports/new" class="item left-item">
         New Report
       </a>
       <a href="/dashboard" class="item left-item">
         Data Dashboard
+      </a>
+      <a href="/service" class="item left-item">
+        Service Object
       </a>
       <div class="right menu rightMenu">
         <% if(!user){ %>

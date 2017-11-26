@@ -1,4 +1,17 @@
 $(document).ready(function() {
+
+    var initShowItem = 4;
+
+    function changeView() {
+      $( ".mainitem" )
+        .filter(function( index ) {
+          return (index > initShowItem)
+        })
+      .css( "display", "none" );
+    }
+
+    changeView();
+
     $('.ui.menu .control').click(function(event) {
       event.preventDefault();
       $(this).addClass('active');
@@ -7,6 +20,8 @@ $(document).ready(function() {
       $('.tab-content').not(tab).css("display", "none");
       $(tab).fadeIn();
     });
+
+
 
     $('.ui.vertical.menu a').click(function(event) {
       $(this).addClass('active');
@@ -60,4 +75,19 @@ $(document).ready(function() {
     $("#hamberge").click(function() {
       $("#A").toggleClass('positionChange',500);
     });
+
+    $("#showmore").on('click',function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        initShowItem = initShowItem+5;
+        if($(".mainitem").length < initShowItem) {
+          $("#showmore")[0].innerHTML = "<h4>No More</h4>";
+        };
+        $( ".mainitem" )
+          .filter(function( index ) {
+            return (index < initShowItem)
+          })
+        .css( "display", "flex" );
+    });
+
 });

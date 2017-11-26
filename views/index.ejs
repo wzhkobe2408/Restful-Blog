@@ -18,7 +18,7 @@
     <div class="ui top attached segment">
       <div class="ui divided items">
         <% blogs.forEach(function(blog){ %>
-          <div class="item">
+          <div class="item mainitem">
             <div class="image">
               <img src="<%= blog.image %>" class="ui centered rounded image" alt="pic">
             </div>
@@ -40,6 +40,9 @@
         <% }) %>
       </div>
     </div>
+        <br />
+    <a href="#" style="text-align:center" id="showmore"><h4>Show More<h4></a>
+
   </div>
 
   <div id="tabs-2" class="ui bottom attached tab segment tab-content" data-tab="second">

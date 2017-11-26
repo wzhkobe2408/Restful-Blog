@@ -4,6 +4,10 @@
   padding-right: 20px;
 }
 
+i:hover{
+  cursor: pointer;
+}
+
 .container.main{
   margin-top: 80px;
 }
@@ -51,6 +55,10 @@ hr{
 
 .profile{
   padding-left: 30px !important;
+}
+
+#profile {
+  object-fit:cover !important;
 }
 
 button{
@@ -114,11 +122,6 @@ button{
  display: block;
 }
 
-.dropdown {
-  background-color: #1b1c1d !important;
-  border-radius: 0 !important;
-}
-
 .ui.menu.compact {
   background-color: #1b1c1d !important;
 }
@@ -175,6 +178,26 @@ a.item.Backmessage{
 	width:218px;
 }
 
+.normal.dropdown {
+  border-radius: 4px;
+}
+
+#map {
+  margin:20px 0;
+  width: 100%;
+  height:180px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 1px rgba(0,0,0,.2);
+}
+
+.downContainer {
+  position: absolute;
+  top:100px;
+}
+
+.datacontainer {
+  margin-top: 100px !important;
+}
 
 @media screen and (max-width: 1000px) {
   a.left-item {

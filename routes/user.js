@@ -180,4 +180,26 @@ router.post('/users/:id/profileImage', function(req, res) {
     })
 })
 
+router.get('/admin/apply/:id', function(req, res) {
+  User.findById(req.params.id)
+    .then(function(foundUser) {
+      foundUser.isManage = true;
+      foundUser.save()
+        .then(function() {
+          req.flash('success','You have successfully become Admin');
+          res.redirect('/');
+        })
+        .catch(function(err) {
+          console.log(err);
+          req.flash('error','Opps, something went wrong');
+          res.redirect('/');
+        })
+    })
+    .catch(function(err) {
+      console.log(err);
+      req.flash('error','Opps, something went wrong');
+      res.redirect('/');
+    })
+})
+
 module.exports = router

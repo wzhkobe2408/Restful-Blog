@@ -4,7 +4,7 @@
         <div class="col-md-5" style="margin-bottom:18px;">
           <div class="ui huge header">User Profile</div>
           <div class="ui card" style="width:80%">
-            <div class="image">
+            <div class="image" style="height:335px;overflow:hidden;">
               <img id='profile' src="<%= user.userProfile.avatar %>">
             </div>
             <div class="content">
@@ -12,7 +12,9 @@
               <div class="meta">
                 <span class="date">2013年加入</span>
               </div>
-              <div class="description"><%= user.email %></div>
+			  
+              <div class="description"><%= user.email %><a style="position:absolute;right:10px;bottom:115px;" class="ui primary basic button" href="/email">Apply for admin</a></div>
+			  
             </div>
             <div class="extra content">
               <form action="/users/<%= user._id %>/profileImage" method="POST" enctype="multipart/form-data">
