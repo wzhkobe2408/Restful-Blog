@@ -8,6 +8,23 @@ i:hover{
   cursor: pointer;
 }
 
+#brand:hover{
+  text-decoration: none !important;
+}
+
+#brand {
+  font-weight: lighter !important;
+}
+
+.form-header {
+  font-size: 26px !important;
+}
+
+
+.header {
+  font-weight: lighter !important;
+}
+
 .container.main{
   margin-top: 80px;
 }
@@ -192,11 +209,11 @@ a.item.Backmessage{
 
 .downContainer {
   position: absolute;
-  top:100px;
+  top:70px;
 }
 
 .datacontainer {
-  margin-top: 100px !important;
+  margin-top: 70px !important;
 }
 
 @media screen and (max-width: 1000px) {

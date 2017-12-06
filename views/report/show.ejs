@@ -9,15 +9,15 @@
       <img class="ui centered rounded image" src="<%= report.image %>" alt="pic">
       <div class="content">
         <a class="ui tag label"><%= report.created_date.toDateString() %></a>
-        <a class="ui teal tag label">Created by <%= report.author.username %></a>
+        <a class="ui teal tag label">由<%= report.author.username %>提交</a>
       </div>
       <div class="description">
         <p><%- report.body %></p>
       </div>
       <hr>
-        <a href="/reports/<%= report._id %>/edit" class="ui primary basic button">Edit</a>
+        <a href="/reports/<%= report._id %>/edit" class="ui primary basic button">编辑</a>
         <form id="delete" action="/users/<%= user._id %>/reports/<%= report._id %>/?_method=DELETE" method="POST">
-          <button class="ui negative basic button">Delete</button>
+          <button class="ui negative basic button">删除</button>
         </form>
     </div>
   </div>

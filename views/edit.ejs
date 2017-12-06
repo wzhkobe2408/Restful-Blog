@@ -1,7 +1,7 @@
 <% include ./partials/header %>
   <div class="ui main text container segment">
     <div class="ui huge header">
-      Edit <%= blog.title %>
+      编辑 <%= blog.title %>
     </div>
     <form class='ui form' action="/blogs/<%= blog._id %>/?_method=PUT" method="POST">
       <div class="field">
@@ -20,7 +20,7 @@
           <%= blog.body %>
         </textarea>
       </div>
-      <button class="ui primary basic button">Submit</button>
+      <button class="ui primary basic button">提交</button>
     </form>
   </div>
 <% include ./partials/footer %>

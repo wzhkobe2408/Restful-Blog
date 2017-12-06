@@ -6,7 +6,7 @@
 		  <%= success %>
 		</div>
 	<% } %>
-    <div class="ui large header">New Feedback</div>
+    <div class="ui large header">义工反馈</div>
     <div class="ui items">
       <div class="item">
         <div class="ui small image">
@@ -72,7 +72,7 @@
       </div>
     </div>
       <hr />
-      <div class="ui large header">My Task Record</div>
+      <div class="ui large header">我的任务</div>
       <% if(user.takenTasks && user.takenTasks.length > 0) { %>
         <div class="ui items">
           <% user.takenTasks.forEach(function(takenTask) { %>
@@ -90,7 +90,7 @@
                 </div>
                 <div class="extra">
                   <a class="ui floated basic vilot button" href='/users/<%= user._id %>/tasks/<%= takenTask._id %>'>
-                    Read More
+                    查看更多
                   </a>
                 </div>
               </div>

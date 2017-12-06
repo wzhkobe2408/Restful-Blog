@@ -7,22 +7,22 @@
       <%= error %>
     </div>
   <% } %>
-  <div class="ui huge header">
-    Log in
+  <div class="ui huge header form-header">
+    登录
   </div>
   <form class='ui form' action="/login" method="POST">
 
     <div class="field">
-      <label>Email</label>
+      <label>邮箱</label>
       <input type="email" name='email' placeholder="example@example.com">
     </div>
 
     <div class="field">
-      <label>Password</label>
-      <input type="password" name='password' placeholder="Enter password..." >
+      <label>密码</label>
+      <input type="password" name='password' placeholder="输入密码..." >
     </div>
 
-    <button class="ui primary basic button">Log in</button>
+    <button class="ui primary basic button">登录</button>
   </form>
 </div>
 

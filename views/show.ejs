@@ -2,7 +2,7 @@
 <div class="ui modal">
   <i class="close icon"></i>
   <div class="header">
-    Profile Picture
+    义工信息确认
   </div>
   <div class="image content">
     <div class="ui medium image">
@@ -16,12 +16,12 @@
   </div>
   <div class="actions">
     <div class="ui black deny button">
-      Nope
+      取消
     </div>
 	<form style="display:inline-block" action="/users/<%= user._id %>/tasks" method="POST">
 		<input name='blogId' type='hidden' value='<%= blog._id %>' >
 		<button class="ui positive right labeled icon button">
-		  Yep, that's me
+		  确定
 		  <i class="checkmark icon"></i>
 		</button>
 	</form>
@@ -45,23 +45,23 @@
       <img class="ui centered rounded image" src="<%= blog.image %>" alt="pic">
       <div class="content">
         <a class="ui tag label"><%= blog.created_date.toDateString() %></a>
-        <a class="ui teal tag label">Created by <%= blog.author.username %></a>
+        <a class="ui teal tag label">发布人 ： <%= blog.author.username %></a>
       </div>
       <div class="description">
         <p><%- blog.body %></p>
       </div>
       <hr>
       <% if(blog.author.id.equals(user._id)){ %>
-        <a href="/blogs/<%= blog._id %>/edit" class="ui primary basic button">Edit</a>
+        <a href="/blogs/<%= blog._id %>/edit" class="ui primary basic button">编辑</a>
         <form id="delete" action="/users/<%= user._id %>/releasedtasks/<%= blog._id %>/?_method=DELETE" method="POST">
-          <button class="ui negative basic button">Delete</button>
+          <button class="ui negative basic button">删除</button>
         </form>
       <% } %>
 
       <% if(blog.taken){ %>
-        <a class="ui teal tag label">Taken by <%= blog.taskTaker.username %></a>
+        <a class="ui teal tag label"><%= blog.taskTaker.username %>已接</a>
       <% } else { %>
-        <button class="ui primary basic button modal-toggle">Take Task</button>
+        <button class="ui primary basic button modal-toggle">接任务</button>
       <% } %>
 
     </div>
@@ -90,7 +90,7 @@
     <div class="field">
       <textarea name='comment[content]' required ></textarea>
     </div>
-    <button class="ui blue labeled submit icon button"><i class="icon edit"></i> Add Reply </button>
+    <button class="ui blue labeled submit icon button"><i class="icon edit"></i> 添加义工回复 </button>
   </form>
   <% } %>
 </div>

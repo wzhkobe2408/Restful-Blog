@@ -81,7 +81,7 @@ $(document).ready(function() {
         e.stopPropagation();
         initShowItem = initShowItem+5;
         if($(".mainitem").length < initShowItem) {
-          $("#showmore")[0].innerHTML = "<h4>No More</h4>";
+          $("#showmore")[0].innerHTML = "<h4>没有更多</h4>";
         };
         $( ".mainitem" )
           .filter(function( index ) {

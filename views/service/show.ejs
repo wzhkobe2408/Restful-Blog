@@ -2,7 +2,7 @@
 <div class="ui grid container adjustcontainer">
   <div class="row">
   <div class="five wide column">
-    <div class="ui huge header">Service Person Info</div>
+    <div class="ui huge header">服务对象信息</div>
 
   <div class="card">
    <div class="ui responsive image">
@@ -16,24 +16,24 @@
      <span><i class="user icon"></i> 75 Friends </span>
    </div>
  </div>
-  <h3 style="margin-top:10px;">Map</h3>
+  <h3 style="margin-top:10px;">地图</h3>
  <div id="map"></div>
  </div>
    <div class="eleven wide column" style="margin-top:45px;">
      <div class="ui main text segment">
      <form class='ui form' action="/login" method="POST">
        <div class="field">
-         <label>Intro</label>
-         <textarea name='adress' rows="8" cols="80">Enter introduction...</textarea>
+         <label>简介</label>
+         <textarea name='adress' rows="8" cols="80">输入简介</textarea>
        </div>
        <div class="field">
          <div class="two fields">
            <div class="field">
-             <label>Age</label>
+             <label>年级</label>
              <input type="number" name="age" placeholder="Enter your age">
            </div>
            <div class="field">
-             <label>Student No.</label>
+             <label>学号</label>
              <input type="text" name="studentNumber" placeholder="Enter your student number">
            </div>
          </div>
@@ -51,28 +51,28 @@
        </div>
        <div class="field">
          <div class="inline fields">
-           <label for="fruit">Grade</label>
+           <label for="fruit">年级</label>
            <div class="field">
              <div class="ui radio checkbox">
-               <input type="radio" name="fruit" checked="" tabindex="0" class="hidden">
+               <input type="radio"  name="grade" checked >
                <label>大一</label>
              </div>
            </div>
            <div class="field">
              <div class="ui radio checkbox">
-               <input type="radio" name="fruit" tabindex="0" class="hidden">
+               <input type="radio"  name="grade">
                <label>大二</label>
              </div>
            </div>
            <div class="field">
              <div class="ui radio checkbox">
-               <input type="radio" name="fruit" tabindex="0" class="hidden">
+               <input type="radio" name="grade" >
                <label>大三</label>
              </div>
            </div>
            <div class="field">
              <div class="ui radio checkbox">
-               <input type="radio" name="fruit" tabindex="0" class="hidden">
+               <input type="radio" name="grade" >
                <label>大四</label>
              </div>
            </div>
@@ -80,47 +80,39 @@
        </div>
        <div class="field">
          <div class="inline fields">
-           <label for="fruit">Gender</label>
+           <label for="fruit">性别</label>
            <div class="field">
              <div class="ui radio checkbox">
-               <input type="radio" name="fruit" checked="" tabindex="0" class="hidden">
-               <label>Male</label>
+               <input type="radio" name="gender" checked >
+               <label>男</label>
              </div>
            </div>
            <div class="field">
              <div class="ui radio checkbox">
-               <input type="radio" name="fruit" tabindex="0" class="hidden">
-               <label>Female</label>
+               <input type="radio" name="gender" >
+               <label>女</label>
              </div>
            </div>
            <div class="field">
              <div class="ui radio checkbox">
-               <input type="radio" name="fruit" tabindex="0" class="hidden">
-               <label>Other</label>
+               <input type="radio" name="gender" >
+               <label>其他</label>
              </div>
            </div>
          </div>
        </div>
        <div class="field">
-         <label>Phone Number</label>
-         <input type='text' name='phone' placeholder='Enter phone numbber...' />
+         <label>联系方式</label>
+         <input type='text' name='phone' placeholder='手机/电话' />
        </div>
        <div class="field">
-         <label>Address</label>
-         <input type="text" name='adress' placeholder="Enter adress..." >
+         <label>地址</label>
+         <input type="text" name='adress' placeholder="地址" >
        </div>
-       <button class="ui primary basic button">Upload</button>
+       <button class="ui primary basic button">保存</button>
      </form>
   </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
 
 <% include ../partials/footer %>

@@ -13,60 +13,60 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
   <script src="https://cdn.bootcss.com/ckeditor/4.7.3/ckeditor.js"></script>
   <script src="https://cdn.bootcss.com/ckeditor/4.7.3/adapters/jquery.js"></script>
-  <title>Rest Blog</title>
+  <title>义工服务</title>
 </head>
 <body>
   <div class="ui fixed inverted menu">
       <div class="header item" id='brand'>
-        <a href="/"><i class="fire icon"></i>Rest Blog</a>
+        <a href="/"><i class="fire icon"></i>义工服务平台</a>
       </div>
       <a href="/" class="item left-item">
-        Home
+        首页
       </a>
       <% if(user && user.isManage){ %>
         <a href="/blogs/new" class="item left-item">
-          New Task
+          新任务
         </a>
       <% } %>
       <a href="/reports/new" class="item left-item">
-        New Report
+        新报告
       </a>
       <a href="/dashboard" class="item left-item">
-        Data Dashboard
+        数据可视
       </a>
       <a href="/service" class="item left-item">
-        Service Object
+        服务对象
       </a>
       <div class="right menu rightMenu">
         <% if(!user){ %>
           <div class="ui category search item">
             <from action='/search' method='POST'>
               <div class="ui icon input">
-                <input class="prompt" type="text" placeholder="Search name">
+                <input class="prompt" type="text" placeholder="搜索名字">
                 <i class="search icon"></i>
               </div>
             </from>
           </div>
-          <a href="/login" class='item'>Login</a>
-          <a href="/signup" class='item'>Signup</a>
+          <a href="/login" class='item'>登录</a>
+          <a href="/signup" class='item'>注册</a>
         <% } else { %>
           <div class="ui category search item">
             <form action='/search' method='POST'>
               <div class="ui icon input">
-                  <input name='q' class="prompt" type="text" placeholder="Search name...">
+                  <input name='q' class="prompt" type="text" placeholder="搜索名字...">
                   <i class="search icon" style='color:#000'></i>
               </div>
             </form>
           </div>
           <div class="ui compact menu">
-            <div class="ui simple dropdown item">Login as <%= user.username %> <i class="dropdown icon"></i> <div class="menu">
-              <a href="/users/<%= user._id %>/profile" class="item">My Profile</a>
-              <a href="/users/<%= user._id %>/reports" class="item">My Report</a>
-              <a href="/users/<%= user._id %>/tasks" class="item Backmessage">My Task Feedback<span class="ui orange small circular label">2</span></a>
+            <div class="ui simple dropdown item"> <%= user.username %> <i class="dropdown icon"></i> <div class="menu">
+              <a href="/users/<%= user._id %>/profile" class="item">我的信息</a>
+              <a href="/users/<%= user._id %>/reports" class="item">我的报告</a>
+              <a href="/users/<%= user._id %>/tasks" class="item Backmessage">我的任务反馈<span class="ui orange small circular label">2</span></a>
             </div>
           </div>
         </div>
-          <a href="/logout" class='item'>Logout</a>
+          <a href="/logout" class='item'>退出</a>
         <% } %>
         <a href="#" class='item' id='hamberge'>
           <i class="sidebar icon"></i>
@@ -76,47 +76,47 @@
 
   <div id="A" class="positionChange ui left inverted vertical menu">
     <a href="/" class="item ">
-      Home
+      主页
     </a>
     <a href="/blogs/new" class="item ">
-      New Task
+      新任务
     </a>
     <a href="/reports/new" class="item ">
-      New Report
+      新报告
     </a>
     <a href="/dashboard" class="item ">
-      Data Dashboard
+      数据可视
     </a>
       <% if(!user){ %>
         <div class="ui category search item">
           <div class="ui icon input">
-            <input class="prompt" type="text" placeholder="Search name">
+            <input class="prompt" type="text" placeholder="搜索名字">
             <i class="search icon"></i>
           </div>
           <div class="results"></div>
         </div>
         <a href="/login" class='item'>
-          Login
+          登录
         </a>
         <a href="/signup" class='item'>
-          Signup
+          注册
         </a>
       <% } else { %>
         <div class="ui category search item">
           <div class="ui icon input">
-            <input class="prompt" type="text" placeholder="Search name...">
+            <input class="prompt" type="text" placeholder="搜索名字...">
             <i class="search icon" style='color:#000'></i>
           </div>
         </div>
 
         <div class="ui compact menu">
-          <div id="verticalLoginMessage" class="ui simple dropdown item">Login as <%= user.username %> <i class="dropdown icon"></i> <div class="menu">
-            <a href="/users/<%= user._id %>/profile" class="item">My Profile</a>
-            <a href="/users/<%= user._id %>/reports" class="item">My Report</a>
-            <a href="/users/<%= user._id %>/tasks" class="item">My Task Feedback<span class="ui orange small circular label">2</span></a>
+          <div id="verticalLoginMessage" class="ui simple dropdown item"> <%= user.username %> <i class="dropdown icon"></i> <div class="menu">
+            <a href="/users/<%= user._id %>/profile" class="item">我的信息</a>
+            <a href="/users/<%= user._id %>/reports" class="item">我的报告</a>
+            <a href="/users/<%= user._id %>/tasks" class="item">我的任务反馈<span class="ui orange small circular label">2</span></a>
           </div>
         </div>
       </div>
-        <a href="/logout" class='item'>Logout</a>
+        <a href="/logout" class='item'>退出</a>
       <% } %>
   </div>
