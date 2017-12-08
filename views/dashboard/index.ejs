@@ -10,16 +10,22 @@
   <div class="row">
     <div class="four wide column">
       <div class="ui vertical fluid tabular menu">
-        <a class="item active">全员 </a>
-        <a class="item">大一 </a>
-        <a class="item">大二 </a>
-        <a class="item ">大三 </a>
-        <a class="item">大四 </a>
+        <a class="item active" id="collegeAll">全员</a>
+        <a class="item" id="collegeOne">大一 </a>
+        <a class="item" id="collegeTwo">大二 </a>
+        <a class="item" id="collegeThree">大三 </a>
+        <a class="item" id="collegeFour">大四 </a>
       </div>
     </div>
     <div class="twelve wide column">
       <div class="ui segment">
          <canvas id="myChart"></canvas>
+      </div>
+      <div style="text-align:center">
+        <button class="ui primary basic button">编辑数据</button>
+        <button class="ui secondary basic button">导入数据</button>
+        <button class="ui positive basic button">移除数据</button>
+        <button class="ui negative basic button">导出文档</button>
       </div>
     </div>
   </div>

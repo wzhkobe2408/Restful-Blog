@@ -3,21 +3,64 @@
     <div class="ui huge header">
       新义工对象
     </div>
-    <form class='ui form'>
+
+    <% if(success && success.length > 0){ %>
+      <div class="ui success message">
+        <i class="close icon" style='margin-top:5px;'></i>
+        <%= success %>
+      </div>
+    <% } %>
+
+    <% if(error && error.length > 0){ %>
+      <div class="ui negative message">
+        <i class="close icon" style='margin-top:5px;'></i>
+        <%= error %>
+      </div>
+    <% } %>
+
+    <form class='ui form' method="POST" action="/service/new" >
+
       <div class="field">
         <label>名字</label>
-        <input type="text" name="report[title]" placeholder="title">
+        <input type="text" name="info[name]" placeholder="输入姓名" required>
       </div>
 
       <div class="field">
-        <label>地址</label>
-        <input type="text" name="report[image]" placeholder="image">
+        <label>住址</label>
+        <input type="text" name="info[address]" placeholder="输入住址" required>
       </div>
 
       <div class="field">
-        <label>Blog Content</label>
-        <textarea id="TextArea1" cols="20" rows="2" class="ckeditor" name="report[body]"></textarea>
+        <label>联系方式</label>
+        <input type="tel" name="info[tel]" placeholder="输入联系方式" required>
       </div>
+
+      <div class="field">
+        <label>性别</label>
+        <select name="info[gender]" >
+          <option value="">性别</option>
+          <option value="男">男</option>
+          <option value="女">女</option>
+          <option value="其他">其他</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>年龄</label>
+        <input  type="number" name="info[age]"  placeholder="输入年龄">
+      </div>
+
+      <div class="field">
+        <label>个人简介</label>
+        <textarea  value="输入个人简介" name="info[intro]" rows="8" cols="80"></textarea>
+      </div>
+
+      <div class="field">
+        <span class="ui fluid button btn-file">
+          <span id="buttonLabel">上传新头像</span> <input name="info[profileImage]" type="file" name="myAvatar">
+        </span>
+      </div>
+
 
       <button class="ui primary basic button">提交</button>
     </form>

@@ -2,10 +2,18 @@ var mongoose = require('mongoose');
 var mongoosastic = require('mongoosastic');
 
 var blogSchema = new mongoose.Schema({
-  title:String,
-  image:String,
-  body:String,
+  service_obj:{
+        id:{
+          type:mongoose.Schema.Types.ObjectId,
+          ref:"Service"
+        },
+        name:String,
+        address:String,
+        profileImage:String
+  },
+  time:{type:Date, default:Date.now},
   created_date:{type:Date, default:Date.now},
+  required_people:Number,
   author:{
     id:{
       type:mongoose.Schema.Types.ObjectId,
@@ -23,13 +31,16 @@ var blogSchema = new mongoose.Schema({
       ref:"Comment"
     }
   ],
-  taskTaker:{
-	  username:String,
-	  id:{
-		type:mongoose.Schema.Types.ObjectId,
-		ref:"User"
-	  }
-  }
+  taskTaker:[
+    {
+  	  username:String,
+  	  id:{
+  		type:mongoose.Schema.Types.ObjectId,
+  		ref:"User"
+  	  }
+    }
+  ],
+  taskIntro:String
 })
 
 blogSchema.plugin(mongoosastic, {

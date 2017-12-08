@@ -1,9 +1,13 @@
 var mongoose = require('mongoose')
 
 var reportSchema = new mongoose.Schema({
-  body:String,
-  title:String,
-  image:String,
+  service_obj:{
+      id:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Service"
+      },
+      serviceName:String
+  },
   created_date:{
     type:Date,
     default:Date.now
@@ -14,6 +18,13 @@ var reportSchema = new mongoose.Schema({
       ref:"User"
     },
     username:String
+  },
+  content:{
+    workContent:String,
+    questionFeedback:String,
+    solution:String,
+    feeling:String,
+    feedback:String
   }
 })
 module.exports = mongoose.model('Report',reportSchema)

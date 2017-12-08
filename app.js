@@ -27,6 +27,7 @@ var serviceRoute = require('./routes/service')
 mongoose.connect(secret.database,{ useMongoClient: true });
 mongoose.Promise  = Promise;
 
+
 app.set("view engine","ejs")
 app.use(express.static(__dirname + "/public"))
 app.use(bodyParser.json())

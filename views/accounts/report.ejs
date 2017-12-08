@@ -13,16 +13,15 @@
       <% user.reports.forEach(function(report){ %>
         <div class="ui items">
           <div class="item">
-            <a class="ui small image">
-              <img src="<%= report.image %>" />
-            </a>
-            <div class="content">
-              <a class="header" href="/reports/<%= report._id %>"><%= report.title %></a>
+            <div class="ui small image">
+             <img src="http://www.semantic-ui.cn/images/avatar2/large/matthew.png">
+           </div>
+            <div class="middle aligned content">
               <div class="description">
-                <p><%- report.body.substring(0,100) %>...</p>
-              </div>
-              <div class="extra">
-                <a class="ui floated basic vilot button" href='/reports/<%= report._id %>'>
+                <p>义工对象名字：</p>
+                <p>义工时间：</p>
+                <p>义工内容：</p>
+                <a class="ui floated basic vilot button">
                   查看更多
                 </a>
               </div>

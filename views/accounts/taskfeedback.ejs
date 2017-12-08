@@ -77,27 +77,27 @@
         <div class="ui items">
           <% user.takenTasks.forEach(function(takenTask) { %>
             <div class="item">
-              <div class="image">
-                <img src="<%= takenTask.image %>" class="ui centered rounded image" alt="pic">
-              </div>
-              <div class="content">
-                <a class="header" href="/users/<%= user._id %>/tasks/<%= takenTask._id %>"><%= takenTask.title %></a>
-                <div class="meta">
-                  <span><%= takenTask.created_date.toDateString() %></span>
+                <div class="ui small image">
+                 <img src="http://www.semantic-ui.cn/images/avatar2/large/matthew.png">
+               </div>
+                <div class="middle aligned content">
+                  <div class="description">
+                    <p>义工对象名字：</p>
+                    <p>义工时间：</p>
+                    <p>义工搭档：</p>
+                  </div>
+                  <div class="extra">
+                    <a class="ui floated basic vilot button" href='/users/<%= user._id %>/tasks/<%= takenTask._id %>'>
+                      查看更多
+                    </a>
+                  </div>
                 </div>
-                <div class="description">
-                  <p><%- takenTask.body.substring(0, 100) %>...</p>
-                </div>
-                <div class="extra">
-                  <a class="ui floated basic vilot button" href='/users/<%= user._id %>/tasks/<%= takenTask._id %>'>
-                    查看更多
-                  </a>
-                </div>
-              </div>
+
             </div>
           <% }) %>
         </div>
       <% }else { %>
         <h3 class="ui header">You don't have any tasks record right now.</h3>
       <% } %>
+</div>
 <% include ../partials/footer %>

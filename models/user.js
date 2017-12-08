@@ -33,12 +33,15 @@ var userSchema = new mongoose.Schema({
   ],
   userProfile:{
     avatar:{
-		type:String,
-		default:"http://www.semantic-ui.cn/images/avatar2/large/kristy.png"
-	},
-    age:Number,
-    major:String,
-    grade:Number
+  		type:String,
+  		default:"http://www.semantic-ui.cn/images/avatar2/large/kristy.png"
+	   },
+     tel:Number,
+     stuNumber:Number,
+     major:String,
+     grade:String,
+     gender:String,
+     age:Number,
   }
 })
 

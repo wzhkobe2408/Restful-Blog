@@ -30,7 +30,7 @@
 
 <div class="ui main text container segment">
   <div class="ui huge header">
-    <%= blog.title %>
+    <p><strong>义工对象 : </strong><%= blog.service_obj.name %><p>
   </div>
 
   <% if(success.length > 0){ %>
@@ -40,58 +40,50 @@
     </div>
   <% } %>
 
-  <div class="ui top attached">
+  <div class="ui items">
     <div class="item">
-      <img class="ui centered rounded image" src="<%= blog.image %>" alt="pic">
-      <div class="content">
-        <a class="ui tag label"><%= blog.created_date.toDateString() %></a>
-        <a class="ui teal tag label">发布人 ： <%= blog.author.username %></a>
-      </div>
-      <div class="description">
-        <p><%- blog.body %></p>
-      </div>
-      <hr>
-      <% if(blog.author.id.equals(user._id)){ %>
-        <a href="/blogs/<%= blog._id %>/edit" class="ui primary basic button">编辑</a>
-        <form id="delete" action="/users/<%= user._id %>/releasedtasks/<%= blog._id %>/?_method=DELETE" method="POST">
-          <button class="ui negative basic button">删除</button>
-        </form>
-      <% } %>
-
-      <% if(blog.taken){ %>
-        <a class="ui teal tag label"><%= blog.taskTaker.username %>已接</a>
-      <% } else { %>
-        <button class="ui primary basic button modal-toggle">接任务</button>
-      <% } %>
-
-    </div>
-  </div>
-
-  <% blog.comments.forEach(function(comment) { %>
-    <div class="description">
-      <div class="ui comments">
-        <div class="comment">
-          <a class="avatar">
-            <img src="http://www.semantic-ui.cn/images/avatar/small/joe.jpg">
-          </a>
-          <div class="content">
-            <a class="author"><%= comment.author.username %></a>
-            <div class="text"><%= comment.content %></div>
-            <div class="text"><%= comment.created_date.toDateString() %></div>
-          </div>
+      <div class="ui small image">
+       <img src="http://www.semantic-ui.cn/images/avatar2/large/matthew.png">
+     </div>
+      <div class="middle aligned content">
+        <div class="header">义工对象介绍： </div>
+        <div class="description">
+          <p>名字：<%= blog.service_obj.name %></p>
+          <p>年龄：<%= blog.service_obj.name %></p>
+          <p>性别：<%= blog.service_obj.name %></p>
+          <p>地址：<%= blog.service_obj.address %></p>
         </div>
       </div>
-      <hr />
     </div>
-  <% }) %>
-
-  <% if(blog.author.id.equals(user._id)){ %>
-  <form class="ui reply form" action='/blogs/<%= blog._id %>/comments' method='POST'>
-    <div class="field">
-      <textarea name='comment[content]' required ></textarea>
+    <hr>
+    <div class="item">
+      <div class="middle aligned content">
+        <div class="header">本次义工须知：</div>
+        <div class="description">
+          <p>义工时间：<%= blog.service_obj.time %></p>
+          <p>义工搭档：<%= blog.service_obj.time %></p>
+        </div>
+      </div>
     </div>
-    <button class="ui blue labeled submit icon button"><i class="icon edit"></i> 添加义工回复 </button>
-  </form>
-  <% } %>
+    <hr>
+    <div class="item">
+      <div class="middle aligned content">
+        <div class="header">义工内容介绍： </div>
+        <div class="description">
+          <p><%= blog.taskIntro %></p>
+        </div>
+      </div>
+    </div>
+    <button class="ui floated basic vilot button modal-toggle">
+      领取任务
+    </button>
+  </div>
+  <form class="ui reply form">
+   <div class="field">
+     <textarea></textarea>
+   </div>
+   <div class="ui blue labeled submit icon button"><i class="icon edit"></i> Add Reply </div>
+ </form>
+    </div>
 </div>
 <% include ./partials/footer %>

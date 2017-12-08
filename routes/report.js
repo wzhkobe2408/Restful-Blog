@@ -2,9 +2,19 @@ var express = require('express')
 var router = express.Router()
 var Report = require('../models/report')
 var User = require('../models/user')
+var Blog = require('../models/blog')
+var Service = require('../models/service')
 
 router.get('/reports/new',isLoggedin,function(req, res) {
-  res.render('report/new')
+  Service.find()
+    .then(function(foundServices) {
+      res.render('report/new',{
+        foundServices:foundServices
+      })
+    })
+    .catch(function(err) {
+      console.log(err);
+    })
 })
 
 router.post('/reports',isLoggedin,function(req, res) {

@@ -2,7 +2,7 @@
 <div class="ui main text container">
 
   <div class="ui huge header">任务列表</div>
-  <% if(success.length > 0){ %>
+  <% if(success && success.length > 0){ %>
     <div class="ui success message">
       <i class="close icon" style='margin-top:5px;'></i>
       <%= success %>
@@ -17,19 +17,23 @@
   <div id="tabs-1" class="ui bottom attached tab segment active tab-content" data-tab="first">
     <div class="ui top attached segment">
       <div class="ui divided items">
-        <% blogs.forEach(function(blog){ %>
+        <% foundBlogs.forEach(function(blog){ %>
           <div class="item mainitem">
             <div class="image">
-              <img src="<%= blog.image %>" class="ui centered rounded image" alt="pic">
+              <img src="http://www.semantic-ui.cn/images/avatar2/large/matthew.png" class="ui centered rounded image" alt="pic">
             </div>
             <div class="content">
-              <a class="header" href="/blogs/<%= blog._id %>"><%= blog.title %></a>
-              <div class="meta">
-                <span><%= blog.created_date.toDateString() %></span>
+              <a class="header" href="/blogs/<%= blog._id %>"><strong>义工对象 : </strong><%= blog.service_obj.name %></a>
+              <div class="description">
+                <p><strong>地址 : </strong><%= blog.service_obj.address %></p>
               </div>
               <div class="description">
-                <p><%- blog.body.substring(0, 100) %>...</p>
+                <p><strong>时间 : </strong><%= blog.time.toDateString() %></p>
               </div>
+              <div class="description">
+                <p><strong>所需人数 : </strong><%= blog.required_people %></p>
+              </div>
+              <hr>
               <div class="extra">
                 <a class="ui floated basic vilot button" href='/blogs/<%= blog._id %>'>
                   查看更多
@@ -48,20 +52,24 @@
   <div id="tabs-2" class="ui bottom attached tab segment tab-content" data-tab="second">
     <div class="ui top attached segment">
       <div class="ui divided items">
-        <% blogs.forEach(function(blog){ %>
+        <% foundBlogs.forEach(function(blog){ %>
           <% if(blog.taken) { %>
           <div class="item">
             <div class="image">
-              <img src="<%= blog.image %>" class="ui centered rounded image" alt="pic">
+              <img src="http://www.semantic-ui.cn/images/avatar2/large/matthew.png" class="ui centered rounded image" alt="pic">
             </div>
             <div class="content">
-              <a class="header" href="/blogs/<%= blog._id %>"><%= blog.title %></a>
+              <a class="header" href="/blogs/<%= blog._id %>"><strong>义工对象 : </strong><%= blog.service_obj.name %></a>
               <div class="meta">
-                <span><%= blog.created_date.toDateString() %></span>
+                <p><strong>地址 : </strong><%= blog.service_obj.address %></p>
               </div>
               <div class="description">
-                <p><%- blog.body.substring(0, 100) %>...</p>
+                <p><strong>时间 : </strong><%= blog.time.toDateString() %></p>
               </div>
+              <div class="description">
+                <p><strong>所需人数 : </strong><%= blog.required_people %></p>
+              </div>
+              <hr>
               <div class="extra">
                 <a class="ui floated basic vilot button" href='/blogs/<%= blog._id %>'>
                   查看更多
@@ -78,20 +86,24 @@
   <div id="tabs-3" class="ui bottom attached tab segment tab-content" data-tab="third">
     <div class="ui top attached segment">
       <div class="ui divided items">
-        <% blogs.forEach(function(blog){ %>
+        <% foundBlogs.forEach(function(blog){ %>
           <% if(!blog.taken) { %>
           <div class="item">
             <div class="image">
-              <img src="<%= blog.image %>" class="ui centered rounded image" alt="pic">
+              <img class="ui centered rounded image" src="http://www.semantic-ui.cn/images/avatar2/large/matthew.png" class="ui centered rounded image" alt="pic">
             </div>
             <div class="content">
-              <a class="header" href="/blogs/<%= blog._id %>"><%= blog.title %></a>
-              <div class="meta">
-                <span><%= blog.created_date.toDateString() %></span>
+              <a class="header" href="/blogs/<%= blog._id %>"><strong>义工对象 : </strong><%= blog.service_obj.name %></a>
+              <div class="description">
+                <p><strong>地址 : </strong><%= blog.service_obj.address %></p>
               </div>
               <div class="description">
-                <p><%- blog.body.substring(0, 100) %>...</p>
+                <p><strong>时间 : </strong><%= blog.time.toDateString() %></p>
               </div>
+              <div class="description">
+                <p><strong>所需人数 : </strong><%= blog.required_people %></p>
+              </div>
+              <hr>
               <div class="extra">
                 <a class="ui floated basic vilot button" href='/blogs/<%= blog._id %>'>
                   查看更多

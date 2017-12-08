@@ -2,6 +2,7 @@ var express = require('express')
 var router = express.Router()
 var Blog = require('../models/blog')
 var User = require('../models/user')
+var Service = require('../models/service')
 
 Blog.createMapping(function(err, mapping) {
   if(err) {
@@ -36,15 +37,11 @@ router.get('/', function(req,res) {
 
 //任务列表页/首页
 router.get('/blogs',function(req,res){
-  Blog.find({},function(err, blogs) {
-    if(err) {
-      console.log(err)
-    } else {
-      res.render("index",{
-        blogs:blogs,
-        success:req.flash('success')
-      })
-    }
+  Blog.find(function(err, foundBlogs) {
+    res.render('index', {
+      foundBlogs:foundBlogs,
+      success:req.flash('success')
+    })
   })
 })
 
@@ -55,23 +52,40 @@ router.post('/blogs',isLoggedin,function(req, res) {
       console.log(err);
       return res.redirect('/blogs');
     } else {
-      var newBlog = req.body.blog;
+      var newBlog = new Blog();
+
       Blog.create(newBlog, function(err, newBlog) {
         if(err) {
           console.log(err);
-          return res.redirect('/blogs');
+          req.flash('error','创建任务失败，请重试');
+          return res.redirect('/blogs/new');
         } else {
+          newBlog.required_people = req.body.required_people;
+          newBlog.time = req.body.time;
+          newBlog.taskIntro = req.body.taskIntro;
+          newBlog.service_obj.id = req.body.serviceObj;
           newBlog.author.id = req.user._id;
-          newBlog.author.username = req.user.username;
-          newBlog.save();
+
+          Service.findById(req.body.serviceObj)
+            .then(function(foundService) {
+              newBlog.service_obj.name = foundService.name,
+              newBlog.service_obj.address = foundService.address,
+              newBlog.service_obj.profileImage = foundService.profileImage
+              newBlog.author.username = req.user.username;
+              newBlog.save();
+            })
+            .catch(function(err) {
+              console.log(err);
+            })
+
           foundUser.releasedTasks.push(newBlog);
           foundUser.save(function(err) {
             if(err) {
               console.log(err);
-              return res.redirect('/blogs');
+              return res.redirect('/blogs/new');
             } else {
-              req.flash('success','Successfully post new blog');
-              return res.redirect('/blogs');
+              req.flash('success','成功发布任务');
+              return res.redirect('/blogs/new');
             }
           })
         }
@@ -80,9 +94,37 @@ router.post('/blogs',isLoggedin,function(req, res) {
   })
 })
 
+//自动填充内容
+
+router.get('/quickfill:serviceId?', function(req, res) {
+  Service.findById(req.query.serviceId)
+    .then(function(foundService) {
+      var data = {
+        "name":foundService.name,
+        "gender":foundService.gender,
+        "address":foundService.address,
+        "tel":foundService.tel
+      };
+      res.json(data)
+    })
+    .catch(function(err) {
+      console.log(err);
+    })
+})
+
 //新增任务表单页
 router.get("/blogs/new",isLoggedin,function(req,res) {
-  res.render("new");
+  Service.find()
+    .then(function(foundServices) {
+      res.render("new",{
+        foundServices:foundServices,
+        error:req.flash('error'),
+        success:req.flash('success')
+      });
+    })
+    .catch(function(err) {
+      console.log(err);
+    })
 })
 
 //查看任务详情页

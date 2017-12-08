@@ -3,36 +3,79 @@
     <div class="ui huge header">
       新任务
     </div>
-    <div class="ui  header">
-      <h5>提示: 你可以选择一个服务对象加速任务信息填写<h5>
+
+    <% if(success.length > 0){ %>
+      <div class="ui success message">
+        <i class="close icon" style='margin-top:5px;'></i>
+        <%= success %>
+      </div>
+    <% } %>
+
+    <% if(error.length > 0){ %>
+      <div class="ui negative message">
+        <i class="close icon" style='margin-top:5px;'></i>
+        <%= error %>
+      </div>
+    <% } %>
+
+    <form id="taskForm" class='ui form' action="/blogs" method="POST">
+
+      <div class="ui  header">
+        <h6>请先选择本次任务对应义工负责人<h6>
+      </div>
+      <div class="field">
+      <select id="taskObjList" name="serviceObj" class="ui fluid normal dropdown">
+        <option value="">对象列表</option>
+        <% foundServices.forEach(function(foundService){ %>
+          <option value="<%= foundService._id %>"><%= foundService.name %></option>
+        <% }) %>
+      </select>
+      </div>
+
+      <div class="field">
+        <label>姓名</label>
+        <input type="text" placeholder="输入姓名...">
+      </div>
+
+      <div class="two fields">
+        <div class="field">
+          <label>性别</label>
+          <select>
+            <option value="">性别</option>
+            <option value="男">男</option>
+            <option value"女">女</option>
+            <option value="其他">其他</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>需求人数</label>
+          <input type="number" name="required_people">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>地址</label>
+        <input type="text" placeholder="输入地址...">
+      </div>
+
+      <div class="field">
+        <label>联系方式</label>
+        <input type="tel"  placeholder="输入联系方式...">
+      </div>
+
+      <div class="field">
+        <label>义工时间</label>
+        <input type="datetime-local" name="time">
+      </div>
+
+      <div class="field">
+        <div class="ui styled accordion">
+          <div class="active title"><i class="dropdown icon"></i>任务说明</div>
+          <div class="active content">
+            <textarea name="taskIntro" rows="8" cols="80" value="输入任务说明..."></textarea>
+          </div>
+        </div>
     </div>
-    <select name="Service List" class="ui fluid normal dropdown">
-      <option value="">对象列表</option>
-      <option value="angular">Name1--</option>
-      <option value="css">--Name2</option>
-      <option value="design">Name3--</option>
-      <option value="ember">--Name4</option>
-      <option value="html">Name5--</option>
-      <option value="ia">--Name6</option>
-      <option value="javascript">Name7--</option>
-    </select>
-
-    <br />
-    <form class='ui form' action="/blogs" method="POST">
-      <div class="field">
-        <label>Title</label>
-        <input type="text" name="blog[title]" placeholder="title">
-      </div>
-
-      <div class="field">
-        <label>Image</label>
-        <input type="text" name="blog[image]" placeholder="image">
-      </div>
-
-      <div class="field">
-        <label>Blog Content</label>
-        <textarea id="TextArea1" cols="20" rows="2" class="ckeditor" name="blog[body]"></textarea>
-      </div>
 
       <button class="ui primary basic button">提交</button>
     </form>

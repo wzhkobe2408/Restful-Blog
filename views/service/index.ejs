@@ -1,5 +1,5 @@
 <% include ../partials/header %>
-<div class="ui main  container segment downContainer">
+<div class="ui main container segment downContainer">
   <div class="ui huge header">
     服务对象
   </div>
@@ -15,46 +15,18 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td><a href="/service/1"><strong>Name1</strong></a></td>
-        <td>68</td>
-        <td>Adress1</td>
-        <th ><i class="write icon"></i></th>
-        <th><i class="remove user icon"></i></th>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td><a href="/service/1"><strong>Name1</strong></a></td>
-        <td>71</td>
-        <td>Adress2</td>
-        <th><i class="write icon"></i></th>
-        <th><i class="remove user icon"></i></th>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td><a href="/service/1"><strong>Name1</strong></a></td>
-        <td>65</td>
-        <td>Adress3</td>
-        <th><i class="write icon"></i></th>
-        <th><i class="remove user icon"></i></th>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td><a href="/service/1"><strong>Name1</strong></a></td>
-        <td>65</td>
-        <td>Adress4</td>
-        <th><i class="write icon"></i></th>
-        <th><i class="remove user icon"></i></th>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td><a href="/service/1"><strong>Name1</strong></a></td>
-        <td>65</td>
-        <td>Adress5</td>
-        <th><i class="write icon"></i></th>
-        <th><i class="remove user icon"></i></th>
-      </tr>
+
+        <% services.slice((pageCount-1)*10,pageCount*10+1).forEach(function(service) { %>
+          <tr>
+            <td><%= service.serviceId %></td>
+            <td><a href="/service/<%= service._id %>"><strong><%= service.name %></strong></a></td>
+            <td><%= service.age %></td>
+            <td><%= service.address %></td>
+            <td><a href="/service/<%= service._id %>" ><i class="write black icon"></i><a></td>
+            <td><i class="remove user icon"></i></td>
+          </tr>
+        <% }) %>
+
     </tbody>
     <tfoot>
       <tr>

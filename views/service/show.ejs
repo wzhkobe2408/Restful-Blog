@@ -6,14 +6,18 @@
 
   <div class="card">
    <div class="ui responsive image">
-     <img src="http://www.semantic-ui.cn/images/avatar2/large/matthew.png">
+    <% if(foundService.gender == '男'){ %>
+      <img src="http://www.semantic-ui.cn/images/avatar2/large/matthew.png">
+    <% } else{ %>
+      <img src="http://www.semantic-ui.cn/images/avatar2/large/kristy.png">
+    <% } %>
    </div>
    <div class="content" style="padding:10px 15px;">
-     <div class="ui header">Matt Giampietro</div>
+     <div class="ui header"><%= foundService.name %></div>
    </div>
    <div class="extra content" style="padding:10px 15px;">
-     <span class="right floated">2013年加入 </span>
-     <span><i class="user icon"></i> 75 Friends </span>
+     <span class="right floated"><%= foundService.joined_date.toDateString() %>加入 </span>
+     <span><i class="user icon"></i>已接受<%= foundService.recieveService %>次服务</span>
    </div>
  </div>
   <h3 style="margin-top:10px;">地图</h3>
@@ -24,95 +28,43 @@
      <form class='ui form' action="/login" method="POST">
        <div class="field">
          <label>简介</label>
-         <textarea name='adress' rows="8" cols="80">输入简介</textarea>
+         <textarea name='adress' rows="8" cols="80"><%= foundService.intro %></textarea>
        </div>
+
        <div class="field">
-         <div class="two fields">
-           <div class="field">
-             <label>年级</label>
-             <input type="number" name="age" placeholder="Enter your age">
-           </div>
-           <div class="field">
-             <label>学号</label>
-             <input type="text" name="studentNumber" placeholder="Enter your student number">
-           </div>
-         </div>
+         <label>姓名</label>
+         <input type="text" value="<%= foundService.name %>"  placeholder="输入你的姓名">
        </div>
-       <div class="field">
-         <select>
-           <option value="">专业</option>
-           <option value="1">计算机类</option>
-           <option value="2">机械类</option>
-           <option value="3">金融类</option>
-           <option value="4">语言类</option>
-           <option value="5">化学类</option>
-           <option value="6">物理类</option>
-         </select>
-       </div>
-       <div class="field">
-         <div class="inline fields">
-           <label for="fruit">年级</label>
+
            <div class="field">
-             <div class="ui radio checkbox">
-               <input type="radio"  name="grade" checked >
-               <label>大一</label>
-             </div>
+             <label>住址</label>
+             <input type="text" value="<%= foundService.address %>"  placeholder="输入你的住址">
            </div>
            <div class="field">
-             <div class="ui radio checkbox">
-               <input type="radio"  name="grade">
-               <label>大二</label>
-             </div>
+             <label>联系方式</label>
+             <input type="tel" value="<%= foundService.tel %>"  placeholder="输入联系方式">
            </div>
+
            <div class="field">
-             <div class="ui radio checkbox">
-               <input type="radio" name="grade" >
-               <label>大三</label>
-             </div>
+             <label>性别</label>
+             <select>
+               <option  value="">性别</option>
+               <option selected value="男">男</option>
+               <option value="女">女</option>
+               <option value="其他">其他</option>
+             </select>
            </div>
+
            <div class="field">
-             <div class="ui radio checkbox">
-               <input type="radio" name="grade" >
-               <label>大四</label>
-             </div>
+             <label>年龄</label>
+             <input type="number" value="<%= foundService.age %>"  placeholder="输入年龄">
            </div>
-         </div>
-       </div>
-       <div class="field">
-         <div class="inline fields">
-           <label for="fruit">性别</label>
-           <div class="field">
-             <div class="ui radio checkbox">
-               <input type="radio" name="gender" checked >
-               <label>男</label>
-             </div>
-           </div>
-           <div class="field">
-             <div class="ui radio checkbox">
-               <input type="radio" name="gender" >
-               <label>女</label>
-             </div>
-           </div>
-           <div class="field">
-             <div class="ui radio checkbox">
-               <input type="radio" name="gender" >
-               <label>其他</label>
-             </div>
-           </div>
-         </div>
-       </div>
-       <div class="field">
-         <label>联系方式</label>
-         <input type='text' name='phone' placeholder='手机/电话' />
-       </div>
-       <div class="field">
-         <label>地址</label>
-         <input type="text" name='adress' placeholder="地址" >
-       </div>
+
        <button class="ui primary basic button">保存</button>
      </form>
   </div>
   </div>
+</div>
 </div>
 
 <% include ../partials/footer %>

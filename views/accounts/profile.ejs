@@ -1,32 +1,39 @@
 <% include ../partials/header %>
-<div class="ui main grid container adjustcontainer">
+<div class="ui  grid container adjustcontainer">
         <div class="row">
-        <div class="col-md-5" style="margin-bottom:18px;">
+        <div class="five wide column" >
           <div class="ui huge header">用户信息</div>
-          <div class="ui card" style="width:80%">
-            <div class="image" style="height:335px;overflow:hidden;">
+          <div class="card" >
+             <div class="ui responsive image">
               <img id='profile' src="<%= user.userProfile.avatar %>">
             </div>
-            <div class="content">
-              <a class="header"><%= user.username %></a>
-              <div class="meta">
-                <span class="date">2013年加入</span>
+            <div class="content" style="padding:10px 15px;">
+              <div class="ui header"><%= user.username %></div>
+
+              <div class="extra content">
+                <span style="float:left">2013年加入</span>
+                <span style="float:right"><%= user.email %></span>
+                <div style="clear:both"></div>
               </div>
 
-              <div class="description"><%= user.email %><a style="position:absolute;right:10px;bottom:115px;" class="ui primary basic button" href="/email">申请成为管理员</a></div>
+              <div style="clear:both;margin-top:10px">
+                <form action="/users/<%= user._id %>/profileImage" method="POST" enctype="multipart/form-data">
+                  <span class="ui fluid button btn-file">
+                    <span id="buttonLabel">上传新头像</span> <input type="file" name="myAvatar">
+                  </span>
+                  <button type="submit" style="margin-top:8px;" class="fluid ui primary basic button">提交</button>
+                </form>
+              </div>
+
+              <div class="description">
+                <a class="fluid ui primary basic button" href="/email">申请成为管理员</a>
+              </div>
 
             </div>
-            <div class="extra content">
-              <form action="/users/<%= user._id %>/profileImage" method="POST" enctype="multipart/form-data">
-                <span class="ui fluid button btn-file">
-                  <span id="buttonLabel">上传新头像</span> <input type="file" name="myAvatar">
-                </span>
-                <button type="submit" style="margin-top:8px;" class="fluid ui primary basic button">提交</button>
-              </form>
-            </div>
+
           </div>
         </div>
-        <div class="col-md-7">
+        <div class="eleven wide column">
           <div class="ui  huge header">
             编辑信息
           </div>
@@ -40,11 +47,11 @@
               <div class="two fields">
                 <div class="field">
                   <label>年龄</label>
-                  <input type="number" name="age" placeholder="Enter your age">
+                  <input type="number" name="age" placeholder="输入你的年龄">
                 </div>
                 <div class="field">
                   <label>学号</label>
-                  <input type="text" name="studentNumber" placeholder="Enter your student number">
+                  <input type="text" name="studentNumber" placeholder="输入你的学号">
                 </div>
               </div>
             </div>
@@ -59,58 +66,27 @@
                 <option value="6">物理类</option>
               </select>
             </div>
+
             <div class="field">
-              <div class="inline fields">
-                <label for="fruit">年级</label>
-                <div class="field">
-                  <div class="ui radio checkbox">
-                    <input type="radio" name="fruit" checked="" tabindex="0" class="hidden">
-                    <label>大一</label>
-                  </div>
-                </div>
-                <div class="field">
-                  <div class="ui radio checkbox">
-                    <input type="radio" name="fruit" tabindex="0" class="hidden">
-                    <label>大二</label>
-                  </div>
-                </div>
-                <div class="field">
-                  <div class="ui radio checkbox">
-                    <input type="radio" name="fruit" tabindex="0" class="hidden">
-                    <label>大三</label>
-                  </div>
-                </div>
-                <div class="field">
-                  <div class="ui radio checkbox">
-                    <input type="radio" name="fruit" tabindex="0" class="hidden">
-                    <label>大四</label>
-                  </div>
-                </div>
-              </div>
+              <select>
+                <option value="">年级</option>
+                <option value="one">大一</option>
+                <option value="two">大二</option>
+                <option value="three">大三</option>
+                <option value="four">大四</option>
+                <option value="other">其他</option>
+              </select>
             </div>
-            <div class="field">
-              <div class="inline fields">
-                <label for="fruit">性别</label>
-                <div class="field">
-                  <div class="ui radio checkbox">
-                    <input type="radio" name="fruit" checked="" tabindex="0" class="hidden">
-                    <label>男</label>
-                  </div>
-                </div>
-                <div class="field">
-                  <div class="ui radio checkbox">
-                    <input type="radio" name="fruit" tabindex="0" class="hidden">
-                    <label>女</label>
-                  </div>
-                </div>
-                <div class="field">
-                  <div class="ui radio checkbox">
-                    <input type="radio" name="fruit" tabindex="0" class="hidden">
-                    <label>其他</label>
-                  </div>
-                </div>
+
+              <div class="field">
+                <select>
+                  <option value="">性别</option>
+                  <option value="male">男</option>
+                  <option value="female">女</option>
+                  <option value="other">其他</option>
+                </select>
               </div>
-            </div>
+
             <div class="field">
               <label>联系方式</label>
               <input type='text' name='phone' placeholder='手机号/电话' />
