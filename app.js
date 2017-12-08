@@ -9,6 +9,7 @@ var flash = require('connect-flash')
 var MongoStore = require('connect-mongo')(session)
 var passport = require('passport')
 var LocalStrategy = require('passport-local').Strategy
+var User = require('./models/user')
 
 
 var secret = require('./config/secret')
@@ -59,7 +60,16 @@ app.use(serviceRoute)
 
 //Email Routes
 app.get('/email',function(req, res) {
+	User.findById(req.user.id)
+		.then(function(foundUser){
+			foundUser.isManage = true;
+			foundUser.save();
+		})
+		.catch(function(err) {
+			console.log(err);
+		})
   var receiveEmail = req.user.email;
+  console.log(req.user.email);
   var helper = require('sendgrid').mail;
   var fromEmail = new helper.Email('XJTUvolunteer@example.com');
   var toEmail = new helper.Email(receiveEmail);
