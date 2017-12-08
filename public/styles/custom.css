@@ -16,6 +16,10 @@ i:hover{
   font-weight: lighter !important;
 }
 
+div.image{
+	margin-left:0 !important;
+}
+
 .form-header {
   font-size: 26px !important;
 }
@@ -251,3 +255,4 @@ footer{
     display:block !important;
   }
 }
+
